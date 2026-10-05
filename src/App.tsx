@@ -10,10 +10,12 @@ function App() {
   return (
     <>
       <Navbar />
-      <Routes>
-        <Route path ='/' element={<Home />}></Route>
-        <Route path='/userlist' element={<UserList />}></Route>
-      </Routes>
+      <div className='flex flex-col items-center w-full'>
+        <Routes>
+          <Route path ='/' element={<Home />}></Route>
+          <Route path='/userlist' element={<UserList />}></Route>
+        </Routes>
+      </div>
     </>
   )
 }

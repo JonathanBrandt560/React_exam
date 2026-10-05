@@ -25,8 +25,8 @@ export const UserList = () => {
     }
 
     return (
-        <div className="flex flex-col bg-slate-400">
-            <ul className="mt-4 items-center list-none p-0 m-0 flex flex-col gap-4">
+        <div>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 pb-4 list-none">
                 {users.map((user) => (
                     <li key={user.id} className="bg-slate-300 text-slate-700 flex border-2 rounded-2xl shadow-2xl w-70 justify-center">
                         <UserCard user={user} onSelect={setSelectedUser} />
