@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { UserCard } from "./UserCard"
-import type { User } from "./types"
-import { UserDetailCard } from "./UserDetailCard";
-import { useGetUserData } from "./useGetUserData";
+import { UserCard } from "../components/UserCard"
+import type { User } from "../types/users"
+import { UserDetailCard } from "../components/UserDetailCard"
+import { useGetUserData } from "../hooks/useGetUserData";
 
 
-export const UserList = () => {
+export const UserListPage = () => {
     const [selectedUser, setSelectedUser] = useState<User | null>(null);
     const { users, isUserDataLoading, isError, getUserData } = useGetUserData();
 

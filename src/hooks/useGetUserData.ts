@@ -1,20 +1,24 @@
 import { useQuery } from "@tanstack/react-query";
-import type { User } from "./types";
+import type { User } from "../types/users";
 
-const MAX_CALLS_PER_DAY = 100;
+export const MAX_CALLS_PER_DAY = 100;
 const STORAGE_KEY = "api-call-count";
 
-const checkAndCountCall = () => {
-    const today = new Date().toISOString().slice(0, 10);
-    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "null");
+const getToday = () => new Date().toISOString().slice(0, 10);
 
-    const count = saved?.date === today ? saved.count : 0;
+export const getTodaysCallCount = (): number => {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "null");
+    return saved?.date === getToday() ? saved.count : 0;
+};
+
+const checkAndCountCall = () => {
+    const count = getTodaysCallCount();
 
     if (count >= MAX_CALLS_PER_DAY) {
         throw new Error("Max antal API-anrop för idag är nått (100).")
     }
 
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ date: today, count: count + 1 }));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ date: getToday(), count: count + 1 }));
 
 };
 

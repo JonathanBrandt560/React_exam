@@ -1,11 +1,12 @@
-import { useGetUserData } from "./useGetUserData";
+import { useGetUserData, getTodaysCallCount, MAX_CALLS_PER_DAY } from "../hooks/useGetUserData"
 import { UserRound, UserStar } from "lucide-react"
 
-export const Home = () => {
+export const HomePage = () => {
 
     const { users, isUserDataLoading, isError } = useGetUserData();
     const usersCount = users.length;
     const adminRoleCount = users.filter((user) => user.roles.includes("admin")).length;
+    const apiCallCount = getTodaysCallCount();
 
     if (isUserDataLoading) return <p className="p-4">Laddar användare...</p>;
 
@@ -17,7 +18,7 @@ export const Home = () => {
                 <h2>Välkommen till Jonathans React-sida</h2>
             </div>
             
-            <div className="flex flex-col bg-slate-300 text-slate-700 border-2 rounded-2xl shadow-2xl w-70 justify-center p-2">
+            <div className="flex flex-col bg-slate-300 text-slate-700 border-2 rounded-2xl shadow-2xl w-70 justify-center p-2 gap-2">
                 <h2 className="self-center text-xl font-bold">Statistik</h2>
                 <div className="flex items-center">
                     <UserRound size={35} />
@@ -27,6 +28,7 @@ export const Home = () => {
                     <UserStar size={40}/>
                     <p className="text-lg px-1">Antal admins: {adminRoleCount}</p>
                 </div>
+                <p>API-anrop idag: {apiCallCount} / {MAX_CALLS_PER_DAY}</p>
             </div>
         </section>
     )
