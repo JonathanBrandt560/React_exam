@@ -5,6 +5,8 @@ import App from './App.js'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { BrowserRouter } from 'react-router-dom'
 
+// Håller cachen för all data som hämtas med useQuery, 
+// så att flera komponenter kan dela på samma data.
 const queryClient = new QueryClient()
 
 const rootElement = document.getElementById('root')

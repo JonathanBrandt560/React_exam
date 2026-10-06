@@ -3,6 +3,8 @@ import { UserRound } from "lucide-react"
 
 interface UserCardProps {
     user : User;
+    // Anropas när användaren klickar på "Visa detaljer".
+    // Föräldern bestämmer vad som händer.
     onSelect: (user: User) => void;
 }
 

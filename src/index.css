@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* Global bakgrundsfärg för hela sidan */
 body {
   @apply bg-slate-400;
 }

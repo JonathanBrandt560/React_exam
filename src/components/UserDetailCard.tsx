@@ -6,13 +6,18 @@ interface UserDetailCardProps {
     onClose: () => void;
 }
 
+// Modal som visar all info om en användare.
+// Stängs via knappen eller genom klick utanför modalen.
 export const UserDetailCard = ({userDetail, onClose} : UserDetailCardProps) => {
 
     return (
+        // Halvgenomskinlig bakgrund som täcker hela skärmen.
+        // Klick här stänger modalen.
         <div onClick={onClose} 
              className="fixed inset-0 z-10 flex items-center justify-center bg-black/50 p-4"
         >     
             <section
+                // Förhindrar modalen att stängas vid klick inuti den.
                 onClick={(e) => e.stopPropagation()} 
                 className="flex flex-col w-full max-w-md max-h-full overflow-y-auto bg-gray-300 border-2 rounded-lg p-4"
             >

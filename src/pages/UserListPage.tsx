@@ -4,8 +4,10 @@ import type { User } from "../types/users"
 import { UserDetailCard } from "../components/UserDetailCard"
 import { useGetUserData } from "../hooks/useGetUserData";
 
-
+// Sida som listar alla användare som kort.
+// Klick på "Visa detaljer" öppnar en modal med mer info.
 export const UserListPage = () => {
+    // Den användare vars detaljer visas i modalen. null = modalen är stängd.
     const [selectedUser, setSelectedUser] = useState<User | null>(null);
     const { users, isUserDataLoading, isError, getUserData } = useGetUserData();
 
@@ -34,6 +36,7 @@ export const UserListPage = () => {
                 ))}
             </ul>
 
+            {/* Modalen renderas bara när en användare är vald */}    
             {selectedUser && <UserDetailCard userDetail={selectedUser} onClose={() => setSelectedUser(null)} />}
         </div>
     )
